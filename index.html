@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous" defer></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBvhvirT4D7hnPNpSOm1gE7IcqYY1otRIs"
+    defer></script>
+
+  <script src="script/lib/p5.scrible.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+  <script src="script/sketch.js"></script>
+
+  <script src="script/script.js" defer></script>
+
+  <title>Weather Website</title>
+</head>
+
+<body>
+  <nav>
+    <input type="text" id='userInput' required>
+  </nav>
+
+  <h3 id="message"></h3>
+
+  <div class="today">
+    <p class="city-name"></p>
+    <p class="description"></p>
+    <img src="" class="weather-icon-image">
+    <p class="temperature"></p>
+    <p class="wind-speed"></p>
+    <p class="wind-humidity"></p>
+  </div>
+
+  <div id="five-days">
+    <!-- created with js -->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+* {
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  text-align: center;
+  color: white;
+}
+
+div {
+  border: 2px solid;
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.9px);
+  -webkit-backdrop-filter: blur(9.9px);
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.today {
+  /* width: 30%; */
+  margin-left: 60%;
+  opacity: 0.8;
+  font-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: color;
+}
+
+.today p {
+  animation: glow 1s ease-in-out infinite alternate;
+}
+.today:hover {
+  opacity: 1;
+  background-blend-mode: normal;
+  color: rgb(240, 248, 255);
+}
+
+.stylingDiv {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#five-days {
+  margin-top: 0.7rem;
+  flex-flow: wrap;
+  font-size: 1em;
+  justify-content: space-around;
+  align-items: center;
+}
+
+img {
+  width: 50px;
+}
+
+#userInput {
+  height: 2rem;
+  width: 16rem;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 1px white;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+#userInput :focus {
+  border: 1px solid white;
+}
+
+canvas {
+  display: block;
+  z-index: -1;
+}
+
+@media screen and (max-width: 600px) {
+  .today {
+    /* width: 30%; */
+    margin-left: 0;
+  }
+  #five-days {
+    margin-top: 2rem;
+    font-size: 0.57em;
+    padding: 0;
+    height: 220px;
+  }
+  #five-days div {
+    max-width: 50px;
+    max-height: 130px;
+  }
+}
