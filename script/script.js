@@ -57,7 +57,6 @@ function searchWeather(lat, lon) {
       dayNight = pod;
       weatherCode = code;
       turpinSpeed = 0.01 * Math.floor(wind_spd)
-      // Välja html elemnterna från html o sätta datan i de 
       $('.city-name').html('City: ' + city_name + ' ' + country_code);
       $('.temperature').html('Temperature: ' + Math.floor(temp) + "°C");
       $('.description').html(description);
