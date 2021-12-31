@@ -1,7 +1,5 @@
-
 // check the user location 
-let userLat;
-let userLng;
+let userLat, userLng;
 if (window.navigator) {
   const successCallBack = function (position) {
     setMessage("Loading..")
@@ -16,10 +14,8 @@ if (window.navigator) {
 }
 
 
-
 // autocomplete input with google places api 
-let googleLat;
-let googleLng;
+let googleLat, googleLng;
 $(document).ready(function () {
   const options = {
     type: ['geocode']
@@ -27,8 +23,8 @@ $(document).ready(function () {
   const autocomplete = new google.maps.places.Autocomplete((document.getElementById('userInput')), options.type);
   google.maps.event.addListener(autocomplete, 'place_changed', function () {
     const near_place = autocomplete.getPlace();
-    let googleLat = near_place.geometry.location.lat();
-    let googleLng = near_place.geometry.location.lng();
+    googleLat = near_place.geometry.location.lat();
+    googleLng = near_place.geometry.location.lng();
     searchWeather(googleLat, googleLng)
     searchImage(userInput.value)
   });
@@ -55,16 +51,13 @@ function searchWeather(lat, lon) {
     function (data) {
       setMessage(" ");
       todayDiv.style.display = 'block';
-      // Hämta variable från data
       // const {city_name} = data   ===  const city_name = data.city_name 
-      // De gör samma sak men jag valde den för o inte reppetera 
       const { pod, city_name, country_code, temp, wind_spd, rh } = data.data[0];
       const { description, icon, code } = data.data[0].weather;
       dayNight = pod;
       weatherCode = code;
       turpinSpeed = 0.01 * Math.floor(wind_spd)
-      // console.log(weatherCode)
-      // Välja html elemnterna från html o sätta data i de 
+      // Välja html elemnterna från html o sätta datan i de 
       $('.city-name').html('City: ' + city_name + ' ' + country_code);
       $('.temperature').html('Temperature: ' + Math.floor(temp) + "°C");
       $('.description').html(description);
@@ -77,7 +70,6 @@ function searchWeather(lat, lon) {
       console.log(error1);
     }
   );
-
 
   fetch(dailyUrl).then(
     function (response) {
@@ -97,16 +89,13 @@ function searchWeather(lat, lon) {
         const { datetime, temp } = data.data[i];
         const { description, icon } = data.data[i].weather;
         const days = $("<div></div>");
-        // let descriptions5 = document.createElement('p')
-        // descriptions5.innerText = `${description}`
         let description5 = $("<p></p>").html(description);
         let img5 = $("<img></img>").attr("src", `https://www.weatherbit.io/static/img/icons/${icon}.png`);
         let temperature5 = $("<p></p>").html(Math.floor(temp) + "°C");
         let date = $("<p></p>").html(datetime);
-        $(days).append(description5, img5, temperature5, date);
+        $(days).append(date, temperature5, img5, description5);
         $('#five-days').append(days);
         fiveDays.style.display = 'flex';
-        // todayDiv.style.display = 'block';
       }
     }
   ).catch(
