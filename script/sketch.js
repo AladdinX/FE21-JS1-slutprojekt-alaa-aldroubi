@@ -1,13 +1,9 @@
 // P5 sketch
 
 // Changing the weather variable  
-let weatherCode;
-let snowNumber = 0;
-let rainNumber = 0;
 let turpinSpeed = 0.01;
-let dayNight;
-
-
+let yoff = 0.1;
+let dayNight, weatherCode;
 let angle = 0;
 let rainDrop = [];
 let snowDrop = [];
@@ -20,9 +16,10 @@ function setup() {
   for (let i = 0; i < 200; i++) {
     snowDrop[i] = new SnowDrop();
   }
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 300; i++) {
     rainDrop[i] = new RainDrop();
   }
+  weatherCode = 610;
 }
 
 function draw() {
@@ -82,8 +79,8 @@ function draw() {
       clouds(2)
       break;
     case 610:
-      snowNumber = 100;
-      rainNumber = 200;
+      snowNumber = 50;
+      rainNumber = 100;
       clouds(4)
       break;
     case 800:
@@ -111,9 +108,7 @@ function draw() {
       rainNumber = 0;
   }
   noStroke();
-  // hill
-  fill(101, 154, 100);
-  ellipse(510, 1150, 3500, 1500);
+
   // rain
   for (let i = 0; i < rainNumber; i++) {
     rainDrop[i].show();
@@ -125,6 +120,7 @@ function draw() {
     snowDrop[i].show();
     snowDrop[i].update();
   }
+  sea();
   windTurpin();
 }
 
@@ -153,7 +149,7 @@ function RainDrop() {
     ellipse(this.x, this.y, 2, 10);
   }
   this.update = function () {
-    this.speed = random(5, 10);
+    this.speed = random(2, 4);
     this.gravity = 1.05;
     this.y = this.y + this.speed + this.gravity;
     if (this.y > height) {
@@ -173,7 +169,7 @@ function SnowDrop() {
     scrib.scribbleEllipse(this.x, this.y, size, size);
   }
   this.update = function () {
-    this.speed = 1;
+    this.speed = 2;
     this.y = this.y + this.speed;
     if (this.y > height) {
       this.y = random(0, -height);
@@ -183,7 +179,7 @@ function SnowDrop() {
 
 function windTurpin() {
   fill(255, 80);
-  ellipse(284, 310, 14, 200);
+  ellipse(284, 480, 14, height - 170);
   translate(284, 222);
   push();
   rotate(angle);
@@ -205,4 +201,19 @@ function setGradient(x, y, w, h, c1, c2) {
     stroke(c);
     line(x, i, x + w, i);
   }
+}
+
+function sea() {
+  fill(100, 170, 255, 200)
+  beginShape();
+  let xoff = 0;
+  for (let x = 0; x <= width; x += 10) {
+    let y = map(noise(xoff, yoff), 0, 1, 450, 350);
+    vertex(x, y);
+    xoff += 0.05;
+  }
+  yoff += 0.01;
+  vertex(width, height);
+  vertex(0, height);
+  endShape(CLOSE);
 }
