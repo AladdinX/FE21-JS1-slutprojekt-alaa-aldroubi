@@ -179,7 +179,7 @@ function SnowDrop() {
 
 function windTurpin() {
   fill(255, 80);
-  ellipse(284, 480, 14, height - 170);
+  ellipse(284, 480, 14, 570);
   translate(284, 222);
   push();
   rotate(angle);
