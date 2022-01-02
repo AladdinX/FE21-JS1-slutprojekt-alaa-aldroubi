@@ -19,7 +19,6 @@ function setup() {
   for (let i = 0; i < 300; i++) {
     rainDrop[i] = new RainDrop();
   }
-  weatherCode = 610;
 }
 
 function draw() {
